@@ -28,11 +28,14 @@ is ( ($test =~ /$qrString/), 1, "ᏳᏂᎪᏛ overload qr-string match" );
 
 my $string = "([#5#])[#Ꮎ#][#4#][#Ꮣ#]";
 my $re = Regexp::Cherokee::getRe ( $string );
-is ( ($re eq "([ᎤᎫᎱᎷᎽᏄᏊᏑᏚᏡᏧᏭᏳ])[Ꮎ-Ꮕ][ᎣᎪᎰᎶᎼᏃᏉᏐᏙᏠᏦᏬᏲ][Ꮣ-Ꮫ]"), 1, "ᏳᏂᎪᏛ function string create" );
+is ( ($re eq "([ᎤᎫᎱᎷᎽᏄᏊᏑᏚᏡᏧᏭᏳ])[ᎾᎿᏀᏁᏂᏃᏄᏅ][ᎣᎪᎰᎶᎼᏃᏉᏐᏙᏠᏦᏬᏲ][ᏓᏔᏕᏖᏗᏘᏙᏚᏛ]"), 1, "Alemtsehay function string create" );
 is ( ($test =~ /$re/), 1, "ᏳᏂᎪᏛ function match" );
 
-$re = Regexp::Cherokee::getRe ( "[ᎠᎭ-Ꮎ]{#2,4-6#}" );
-is ( ($re eq "[ᎡᎮᎴᎺᏁᎣᎰᎶᎼᏃᎤᎱᎷᎽᏄᎥᎲᎸᎭᏅ]"), 1, "[ᎠᎭ-Ꮎ]{#2,4-6#} Expansion" );
+#
+# this is broken, fix handleChars in next version:
+#
+$re = Regexp::Cherokee::getRe ( "[ᎠᎭ-Ꮎ]{%2,4-6}" );
+is ( ($re eq "[ᎡᎮᎴᎺᏁᎣᎰᎶᎼᏃᎤᎱᎷᎽᏄᎥᎲᎸᎭᏅ]"), 1, "[ᎠᎭ-Ꮎ]{%2,4-6} Expansion" );
 
 $re = Regexp::Cherokee::getRe ( "[#Ꮖ#]" );
-is ( ($re eq "[Ꮖ-Ꮛ]"), 1, "[#Ꮖ#] Expansion" );
+is ( ($re eq "[ᏆᏇᏈᏉᏊᏋ]"), 1, "[#Ꮖ#] Expansion" );

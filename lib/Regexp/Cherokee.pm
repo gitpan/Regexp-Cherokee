@@ -7,7 +7,7 @@ BEGIN
 use strict;
 use vars qw($VERSION @EXPORT_OK %EXPORT_TAGS %CherokeeClasses %CherokeeEquivalence $pseudoMatrix);
 
-	$VERSION = "0.03";
+	$VERSION = "0.01";
 	
 	@EXPORT_OK = qw(%CherokeeClasses %CherokeeEquivalence &getForm &setForm &subForm &formatForms);
 	%EXPORT_TAGS = ( utils => [qw(&getForm &setForm &subForm &formatForms)] );
@@ -20,19 +20,19 @@ use vars qw($VERSION @EXPORT_OK %EXPORT_TAGS %CherokeeClasses %CherokeeEquivalen
 	4	=> "ᎣᎪᎰᎶᎼᏃᏉᏐᏙᏠᏦᏬᏲ",
 	5	=> "ᎤᎫᎱᎷᎽᏄᏊᏑᏚᏡᏧᏭᏳ",
 	6	=> "ᎥᎬᎲᎸᏅᏋᏒᏛᏢᏨᏮᏴ",
-	Ꭰ	=> "Ꭰ-Ꭵ",
-	Ꭶ	=> "Ꭶ-Ꭼ",
-	Ꭽ	=> "Ꭽ-Ꮂ",
-	Ꮃ	=> "Ꮃ-Ꮈ",
-	Ꮉ	=> "Ꮉ-Ꮍ",
-	Ꮎ	=> "Ꮎ-Ꮕ",
-	Ꮖ	=> "Ꮖ-Ꮛ",
-	Ꮜ	=> "Ꮜ-Ꮢ",
-	Ꮣ	=> "Ꮣ-Ꮫ",
-	Ꮬ	=> "Ꮬ-Ꮲ",
-	Ꮳ	=> "Ꮳ-Ꮸ",
-	Ꮹ	=> "Ꮹ-Ꮾ",
-	Ꮿ	=> "Ꮿ-Ᏼ"
+	Ꭰ	=> "ᎠᎡᎢᎣᎤᎥ",
+	Ꭶ	=> "ᎦᎧᎨᎩᎪᎫᎬ",
+	Ꭽ	=> "ᎭᎮᎯᎰᎱᎲ",
+	Ꮃ	=> "ᎳᎴᎵᎶᎷᎸ",
+	Ꮉ	=> "ᎹᎺᎻᎼᎽ ",
+	Ꮎ	=> "ᎾᎿᏀᏁᏂᏃᏄᏅ",
+	Ꮖ	=> "ᏆᏇᏈᏉᏊᏋ",
+	Ꮜ	=> "ᏌᏍᏎᏏᏐᏑᏒ",
+	Ꮣ	=> "ᏓᏔᏕᏖᏗᏘᏙᏚᏛ",
+	Ꮬ	=> "ᏜᏝᏞᏟᏠᏡᏢ",
+	Ꮳ	=> "ᏣᏤᏥᏦᏧᏨ",
+	Ꮹ	=> "ᏩᏪᏫᏬᏭᏮ",
+	Ꮿ	=> "ᏯᏰᏱᏲᏳᏴ",
 );
 
 #
@@ -285,9 +285,9 @@ $_ = ($#_) ? $_[1] : $_[0];
 	# is used in place of \p{Cherokee}, dangerous...
 	#
 	# s/(\p{Cherokee})\{%([\d,-]+)\}/setRange($1,$2)/eog;
-	s/(\w)\{#([\d,-]+)#\}/setRange($1,$2)/eog;
+	s/(\w)\{%([\d,-]+)\}/setRange($1,$2)/eog;
 
-	s/\[(\^)?(\p{Cherokee}+.*?)\]\{(\^)?#([\d,-]+)#\}/setRange($2,$4,$1,$3)/eog;
+	s/\[(\^)?(\p{Cherokee}+.*?)\]\{(\^)?%([\d,-]+)\}/setRange($2,$4,$1,$3)/eog;
 
 	$_;
 }
