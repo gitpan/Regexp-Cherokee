@@ -1,3 +1,6 @@
+0.03 Sun May 30  14:23:53 EDT 2004
+	- updated limit notation to match range notation.
+
 0.02 Tue Jun 17 06:57:57 EDT 2003
 	- refined/simplified %CherokeeClasses.
 	- verified that range tests work.

@@ -15,7 +15,7 @@ print "$hello does not contain a [#6#]\n" unless ( $hello =~ /[#6#]/ );
 print "$hello contains a [#Ꭰ#]\n" if ( $hello =~ /[#Ꭰ#]/ );
 print "$hello contains a [#Ꮜ#]\n" if ( $hello =~ /[#Ꮜ#]/ );
 print "$hello does not contain a [#Ꮎ#]\n" unless ( $hello =~ /[#Ꮎ#]/ );
-print "$hello contains a character of range [ᎠᎭ-Ꮎ]{%2,4-6}\n" if ( $hello =~ /[ᎠᎭ-Ꮎ]{%2,4-6}/ );
+print "$hello contains a character of range [ᎠᎭ-Ꮎ]{#2,4-6#}\n" if ( $hello =~ /[ᎠᎭ-Ꮎ]{#2,4-6#}/ );
 
 print "\n";
 my $dumbTest = $hello;
